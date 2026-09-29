@@ -35,6 +35,7 @@ export class FleetList implements OnInit {
 
   colonnes: string[] = ['nom', 'type', 'capacite', 'longueur', 'tarif', 'caution', 'permis', 'actions'];
 
+  boatToEdit : Boat | null = null;
   boatToDelete : Boat | null = null;
 
   ngOnInit(): void {
@@ -48,7 +49,7 @@ export class FleetList implements OnInit {
 }
 
   onEdit(boat: Boat){
-    
+    this.boatToEdit = boat;
   }
 
   onDelete(boat: Boat){

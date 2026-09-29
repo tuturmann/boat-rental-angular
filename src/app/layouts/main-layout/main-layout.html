@@ -1,12 +1,13 @@
-<header>
-    <button>III</button> <!-- bouton burger a afficher que quand @media telephone -->
-    Location de bateaux
-</header>
-<mat-sidenav-container class="layout-container">
-    <mat-sidenav mode="side" opened> <!-- qd mode telephone c closed et on louvre avec bouton burger -->
+
+    <header>
+        <button>III</button> <!-- bouton burger a afficher que quand @media telephone -->
+        Location de bateaux
+    </header>
+    <mat-sidenav-container class="layout-container">
+        <mat-sidenav mode="side" opened> <!-- qd mode telephone c closed et on louvre avec bouton burger -->
         <app-navbar></app-navbar>
     </mat-sidenav>
-
+    
     <mat-sidenav-content>
         <router-outlet></router-outlet>
     </mat-sidenav-content>

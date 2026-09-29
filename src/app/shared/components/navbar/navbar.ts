@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { MatButton } from '@angular/material/button';
-import { RouterLink } from '@angular/router';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  imports: [RouterLink, MatButton],
+  imports: [RouterLink, MatButton, RouterLinkActive],
   selector: 'app-navbar',
   styleUrl: './navbar.scss',
   templateUrl: './navbar.html',

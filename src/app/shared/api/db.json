@@ -1,16 +1,6 @@
 {
   "fleetList": [
     {
-      "id": 1,
-      "nom": "Vagabond II",
-      "type": "Voilier",
-      "capacite": 6,
-      "longueur": 11,
-      "tarif": 320,
-      "caution": 1500,
-      "permis": true
-    },
-    {
       "id": 2,
       "nom": "Sirocco",
       "type": "Voilier",
