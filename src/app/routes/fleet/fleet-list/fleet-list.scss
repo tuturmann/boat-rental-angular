@@ -1,0 +1,16 @@
+.searchbar {
+    display: flex;
+    flex-direction: column;
+}
+
+.top-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.page-description {
+    display: flex;
+    flex-direction: column;
+}

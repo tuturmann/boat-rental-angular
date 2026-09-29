@@ -1,0 +1,47 @@
+<div class="top-bar">
+    <div class="page-description">
+        <h1>Flotte</h1>
+        <p>Gérer les bateaux du catalogue</p>
+    </div>
+    <button>+ Ajouter un bateau</button>
+</div>
+<div class="searchbar">
+    <label for="site-search">Recherche</label>
+    <input type="search"/>
+</div>
+<table mat-table [dataSource]="fleetList">
+    <ng-container matColumnDef="nom">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.nom}}</td>
+    </ng-container>
+    <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.type}}</td>
+    </ng-container>
+    <ng-container matColumnDef="capacite">
+        <th mat-header-cell *matHeaderCellDef>Capacité</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.capacite}}</td>
+    </ng-container>
+    <ng-container matColumnDef="longueur">
+        <th mat-header-cell *matHeaderCellDef>Longueur</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.longueur}}</td>
+        </ng-container>
+    <ng-container matColumnDef="tarif">
+        <th mat-header-cell *matHeaderCellDef>Tarif</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.tarif}}</td>
+        </ng-container>
+    <ng-container matColumnDef="caution">
+        <th mat-header-cell *matHeaderCellDef>Caution</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.caution}}</td>
+        </ng-container>
+    <ng-container matColumnDef="permis">
+        <th mat-header-cell *matHeaderCellDef>Permis</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.permis}}</td>
+    </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="colonnes"></tr>
+    <tr mat-row *matRowDef="let row; columns: colonnes"></tr>
+
+
+</table>

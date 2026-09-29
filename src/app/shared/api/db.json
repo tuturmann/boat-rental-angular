@@ -1,0 +1,89 @@
+{
+  "fleetList": [
+    {
+      "id": 1,
+      "nom": "Vagabond II",
+      "type": "Voilier",
+      "capacite": 6,
+      "longueur": 11,
+      "tarif": 320,
+      "caution": 1500,
+      "permis": true
+    },
+    {
+      "id": 2,
+      "nom": "Sirocco",
+      "type": "Voilier",
+      "capacite": 4,
+      "longueur": 9,
+      "tarif": 260,
+      "caution": 1200,
+      "permis": true
+    },
+    {
+      "id": 3,
+      "nom": "Petit Phare",
+      "type": "Semi-rigide",
+      "capacite": 8,
+      "longueur": 6,
+      "tarif": 180,
+      "caution": 800,
+      "permis": false
+    },
+    {
+      "id": 4,
+      "nom": "Zéphyr",
+      "type": "Bateau à moteur",
+      "capacite": 6,
+      "longueur": 8,
+      "tarif": 340,
+      "caution": 1500,
+      "permis": true
+    },
+    {
+      "id": 5,
+      "nom": "Calypso",
+      "type": "Voilier",
+      "capacite": 10,
+      "longueur": 14,
+      "tarif": 560,
+      "caution": 2500,
+      "permis": true
+    }
+  ],
+  "clientList": [
+    {
+      "id": 1,
+      "nom": "Bernard",
+      "prenom": "Camille",
+      "email": "camille.bernard@email.fr",
+      "telephone": "0612345678",
+      "permis": true
+    },
+    {
+      "id": 2,
+      "nom": "Roussel",
+      "prenom": "Anne",
+      "email": "a.roussel@email.fr",
+      "telephone": "0623456789",
+      "permis": false
+    },
+    {
+      "id": 3,
+      "nom": "Da Silva",
+      "prenom": "Tiago",
+      "email": "tiago.dasilva@email.fr",
+      "telephone": "0634567890",
+      "permis": true
+    },
+    {
+      "id": 4,
+      "nom": "Vinci",
+      "prenom": "Léa",
+      "email": "lea.vinci@email.fr",
+      "telephone": "0645678901",
+      "permis": false
+    }
+  ]
+}
+
