@@ -1,1 +1,50 @@
-<p>fleet-form works!</p>
+<div class="top-bar">
+    <div class="page-description">
+        <h1>Flotte</h1>
+        <p>Ajouter un bateau dans le catalogue</p>
+    </div>
+</div>
+
+<form [formGroup]="boatForm" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field>
+        <mat-label>Nom</mat-label>
+        <input matInput formControlName="nom" required/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Type</mat-label>
+        <mat-select formControlName="type">
+            <mat-option value="Voilier">Voilier</mat-option>
+            <mat-option value="Bateau à moteur">Bateau à moteur</mat-option>
+            <mat-option value="Semi-rigide">Semi-rigide</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Capacité</mat-label>
+        <input matInput min=1 type="number" formControlName="capacite"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Longueur</mat-label>
+        <input matInput min=1 type="number" formControlName="longueur"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Tarif journalier</mat-label>
+        <input matInput min=0 type="number" formControlName="tarif"/>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Caution</mat-label>
+        <input matInput min=0 type="number" formControlName="caution"/>
+    </mat-form-field>
+
+    <div class="checkbox-container">
+        <mat-checkbox formControlName="permis">Permis requis</mat-checkbox>
+    </div>
+
+    <button mat-button type="submit">
+        Enregistrer le bateau
+    </button>
+</form>

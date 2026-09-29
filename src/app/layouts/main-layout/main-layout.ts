@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { Navbar } from '../../shared/components/navbar/navbar';
 import { MatSidenavContainer } from '@angular/material/sidenav';
 import { MatSidenav } from '@angular/material/sidenav';

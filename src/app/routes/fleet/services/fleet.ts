@@ -13,4 +13,13 @@ export class FleetService {
   getFleet() {
     return this.http.get<Boat[]>(`${this.baseUrl}/fleetList`);
   }
+
+  deleteBoat(boat: Boat){
+    return this.http.delete(`${this.baseUrl}/fleetList/${boat.id}`);
+  }
+
+  addBoat(nom: string, type: string, capacite: number, longueur: number, tarif: number, caution: number, permis: boolean){
+    const body = { nom, type, capacite, longueur, tarif, caution, permis };
+    return this.http.post<Boat>(`${this.baseUrl}/fleetList`, body)
+  }
 }

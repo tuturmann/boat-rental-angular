@@ -1,6 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FleetService } from '../services/fleet';
+import { CapacitePipe } from '../../../shared/pipes/capacite/capacite-pipe';
+import { LongueurPipe } from '../../../shared/pipes/longueur/longueur-pipe';
+import { CurrencyPipe } from '@angular/common';
+import { PermisPipe } from '../../../shared/pipes/permis/permis-pipe';
+import { RouterLink } from '@angular/router';
+import { MatButton } from '@angular/material/button';
 
 export interface Boat {
   id: string;
@@ -16,7 +22,7 @@ export interface Boat {
 @Component({
   selector: 'app-fleet-list',
   standalone: true,
-  imports: [MatTableModule],
+  imports: [MatTableModule, CapacitePipe, LongueurPipe, CurrencyPipe, PermisPipe, RouterLink, MatButton],
   styleUrl: './fleet-list.scss',
   templateUrl: './fleet-list.html',
 })
@@ -27,13 +33,32 @@ export class FleetList implements OnInit {
   // le MatTAbleDataSource permet de rafraîchir automatiquement quand on affect fleetListe.data à bateaux, ce que Boat<>[] ne fait pas
   public fleetList = new MatTableDataSource<Boat>([]);
 
-  colonnes: string[] = ['nom', 'type', 'capacite', 'longueur', 'tarif', 'caution', 'permis'];
+  colonnes: string[] = ['nom', 'type', 'capacite', 'longueur', 'tarif', 'caution', 'permis', 'actions'];
 
+  boatToDelete : Boat | null = null;
 
   ngOnInit(): void {
-    this.fleetService.getFleet().subscribe(bateaux => {
-      console.log(bateaux);
-      this.fleetList.data = bateaux;
-    })
+    this.loadFleet();
+  }
+
+  loadFleet(): void {
+  this.fleetService.getFleet().subscribe(bateaux => {
+    this.fleetList.data = bateaux;
+  });
+}
+
+  onEdit(boat: Boat){
+    
+  }
+
+  onDelete(boat: Boat){
+    if (this.boatToDelete == boat) {
+      this.fleetService.deleteBoat(boat).subscribe(deletion => {console.log(deletion)});
+      this.loadFleet();
+    }
+    else {
+      this.boatToDelete = boat;
+      return;      
+    }
   }
 }

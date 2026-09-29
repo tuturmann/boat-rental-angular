@@ -3,16 +3,16 @@
         <h1>Flotte</h1>
         <p>Gérer les bateaux du catalogue</p>
     </div>
-    <button>+ Ajouter un bateau</button>
+    <button mat-button type="button" routerLink="ajouter">+ Ajouter un bateau</button>
 </div>
 <div class="searchbar">
     <label for="site-search">Recherche</label>
     <input type="search"/>
 </div>
 <table mat-table [dataSource]="fleetList">
-    <ng-container matColumnDef="nom">
+    <ng-container matColumnDef="nom" >
         <th mat-header-cell *matHeaderCellDef>Nom</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.nom}}</td>
+        <td mat-cell *matCellDef="let boat" class="highlight"> {{boat.nom}}</td>
     </ng-container>
     <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>Type</th>
@@ -20,23 +20,34 @@
     </ng-container>
     <ng-container matColumnDef="capacite">
         <th mat-header-cell *matHeaderCellDef>Capacité</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.capacite}}</td>
+        <td mat-cell *matCellDef="let boat"> {{boat.capacite | capacite}} </td>
     </ng-container>
     <ng-container matColumnDef="longueur">
         <th mat-header-cell *matHeaderCellDef>Longueur</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.longueur}}</td>
+        <td mat-cell *matCellDef="let boat"> {{boat.longueur | longueur}}</td>
         </ng-container>
     <ng-container matColumnDef="tarif">
-        <th mat-header-cell *matHeaderCellDef>Tarif</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.tarif}}</td>
+        <th mat-header-cell *matHeaderCellDef>Tarif/jour</th>
+        <td mat-cell *matCellDef="let boat"> {{boat.tarif | currency:'EUR':'symbol':'1.0-0':'fr-FR' }}</td>
         </ng-container>
     <ng-container matColumnDef="caution">
         <th mat-header-cell *matHeaderCellDef>Caution</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.caution}}</td>
+        <td mat-cell *matCellDef="let boat"> {{boat.caution | currency:'EUR':'symbol':'1.0-0':'fr-FR' }}</td>
         </ng-container>
     <ng-container matColumnDef="permis">
         <th mat-header-cell *matHeaderCellDef>Permis</th>
-        <td mat-cell *matCellDef="let boat"> {{boat.permis}}</td>
+        <td mat-cell *matCellDef="let boat">
+            <span class="{{ boat.permis ? 'requis' : '' }}">
+                {{boat.permis | permis}}
+            </span>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let boat">
+            <button mat-button (click)="onEdit(boat)">EDIT</button>
+            <button mat-button (click)="onDelete(boat)" class="{{boatToDelete == boat ? 'second-click' : 'first-click'}}">DELETE</button>
+        </td>
     </ng-container>
 
 

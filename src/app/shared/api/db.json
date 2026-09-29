@@ -31,16 +31,6 @@
       "permis": false
     },
     {
-      "id": 4,
-      "nom": "Zéphyr",
-      "type": "Bateau à moteur",
-      "capacite": 6,
-      "longueur": 8,
-      "tarif": 340,
-      "caution": 1500,
-      "permis": true
-    },
-    {
       "id": 5,
       "nom": "Calypso",
       "type": "Voilier",
@@ -49,6 +39,66 @@
       "tarif": 560,
       "caution": 2500,
       "permis": true
+    },
+    {
+      "nom": "a",
+      "type": "voilier",
+      "capacite": 1,
+      "longueur": 1,
+      "tarifJournalier": 1,
+      "caution": 1,
+      "permisRequis": true,
+      "id": 6
+    },
+    {
+      "nom": "A",
+      "type": "Voilier",
+      "capacite": 1,
+      "longueur": 2,
+      "tarifJournalier": 3,
+      "caution": 4,
+      "permisRequis": true,
+      "id": 7
+    },
+    {
+      "nom": "AAA",
+      "type": "Voilier",
+      "capacite": 1,
+      "longueur": 2,
+      "tarifJournalier": 3,
+      "caution": 4,
+      "permisRequis": true,
+      "id": 8
+    },
+    {
+      "nom": "AB",
+      "type": "Bateau à moteur",
+      "capacite": 2,
+      "longueur": 3,
+      "tarifJournalier": 4,
+      "caution": 5,
+      "permisRequis": true,
+      "id": 9
+    },
+    {
+      "nom": "1AZE",
+      "type": "Voilier",
+      "capacite": 0,
+      "longueur": 0,
+      "tarif": 5,
+      "caution": 0,
+      "permis": false,
+      "id": 12
+    },
+    {
+      "nom": "&é\"",
+      "type": "Bateau à moteur",
+      "capacite": 123,
+      "longueur": 123,
+      "tarif": 123,
+      "caution": 213,
+      "permis": true,
+      "id": 13
     }
   ],
   "clientList": [
@@ -86,4 +136,3 @@
     }
   ]
 }
-
