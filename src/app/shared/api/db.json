@@ -1,16 +1,6 @@
 {
   "fleetList": [
     {
-      "id": 2,
-      "nom": "Sirocco",
-      "type": "Voilier",
-      "capacite": 4,
-      "longueur": 9,
-      "tarif": 260,
-      "caution": 1200,
-      "permis": true
-    },
-    {
       "id": 3,
       "nom": "Petit Phare",
       "type": "Semi-rigide",
@@ -31,56 +21,6 @@
       "permis": true
     },
     {
-      "nom": "a",
-      "type": "voilier",
-      "capacite": 1,
-      "longueur": 1,
-      "tarifJournalier": 1,
-      "caution": 1,
-      "permisRequis": true,
-      "id": 6
-    },
-    {
-      "nom": "A",
-      "type": "Voilier",
-      "capacite": 1,
-      "longueur": 2,
-      "tarifJournalier": 3,
-      "caution": 4,
-      "permisRequis": true,
-      "id": 7
-    },
-    {
-      "nom": "AAA",
-      "type": "Voilier",
-      "capacite": 1,
-      "longueur": 2,
-      "tarifJournalier": 3,
-      "caution": 4,
-      "permisRequis": true,
-      "id": 8
-    },
-    {
-      "nom": "AB",
-      "type": "Bateau à moteur",
-      "capacite": 2,
-      "longueur": 3,
-      "tarifJournalier": 4,
-      "caution": 5,
-      "permisRequis": true,
-      "id": 9
-    },
-    {
-      "nom": "1AZE",
-      "type": "Voilier",
-      "capacite": 0,
-      "longueur": 0,
-      "tarif": 5,
-      "caution": 0,
-      "permis": false,
-      "id": 12
-    },
-    {
       "nom": "&é\"",
       "type": "Bateau à moteur",
       "capacite": 123,
@@ -89,6 +29,16 @@
       "caution": 213,
       "permis": true,
       "id": 13
+    },
+    {
+      "nom": "Bateau",
+      "type": "Bateau à moteur",
+      "capacite": 123,
+      "longueur": 23,
+      "tarif": 3,
+      "caution": 4,
+      "permis": false,
+      "id": 14
     }
   ],
   "clientList": [
