@@ -37,7 +37,7 @@
     <ng-container matColumnDef="actions">
         <th mat-header-cell *matHeaderCellDef>Actions</th>
         <td mat-cell *matCellDef="let client">
-            <button mat-button routerLink="detail">VIEW</button>
+            <button mat-button [routerLink]="['detail',client.id]">VIEW</button>
             <button mat-button (click)="onDelete(client)" class="{{clientToDelete == client ? 'second-click' : 'first-click'}}">DELETE</button>
         </td>
     </ng-container>

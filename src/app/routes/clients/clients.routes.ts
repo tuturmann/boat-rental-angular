@@ -10,7 +10,7 @@ export const ClientRoutes: Routes = [
     loadComponent: () => import('./client-form/client-form').then(m => m.ClientForm)
   },
   {
-    path: 'detail',
+    path: 'detail/:id',
     loadComponent: () => import('./client-detail/client-detail').then(m => m.ClientDetail)
   }
 ];

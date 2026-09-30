@@ -12,6 +12,10 @@ export class ClientsService {
         return this.http.get<Client[]>(`${this.baseUrl}/clientList`);
     }
     
+    getClientById(id: number) {
+        return this.http.get<Client>(`${this.baseUrl}/clientList/${id}`);
+    }
+    
     deleteClient(client: Client){
         return this.http.delete(`${this.baseUrl}/clientList/${client.id}`);
     }
