@@ -11,7 +11,7 @@ export interface Client {
   email: string;
   telephone: string;
   permisBateau: boolean;
-  statut: "Actif" | "A risque";
+  statut: 'Actif' | 'A risque';
 }
 
 @Component({
@@ -21,36 +21,34 @@ export interface Client {
   styleUrl: './client-list.scss',
   templateUrl: './client-list.html',
 })
-
-
 export class ClientList implements OnInit {
   private clientsService = inject(ClientsService);
   public clientList = new MatTableDataSource<Client>([]);
 
-  colonnes: string[] = ['nom', 'prenom', 'email', 'telephone', 'permisBateau','actions'];
+  colonnes: string[] = ['nom', 'prenom', 'email', 'telephone', 'permisBateau', 'actions'];
 
-  clientToEdit : Client | null = null;
-  clientToDelete : Client | null = null;
+  clientToEdit: Client | null = null;
+  clientToDelete: Client | null = null;
 
   ngOnInit(): void {
     this.loadClient();
   }
 
   loadClient(): void {
-  this.clientsService.getClient().subscribe(client => {
-    this.clientList.data = client;
-  });
-}
+    this.clientsService.getClient().subscribe((client) => {
+      this.clientList.data = client;
+    });
+  }
 
-
-  onDelete(client: Client){
+  onDelete(client: Client) {
     if (this.clientToDelete == client) {
-      this.clientsService.deleteClient(client).subscribe(deletion => {console.log(deletion)});
+      this.clientsService.deleteClient(client).subscribe((deletion) => {
+        console.log(deletion);
+      });
       this.loadClient();
-    }
-    else {
+    } else {
       this.clientToDelete = client;
-      return;      
+      return;
     }
   }
 }

@@ -5,6 +5,6 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class LongueurPipe implements PipeTransform {
   transform(value: string): string {
-    return value+'m';
+    return value + 'm';
   }
 }

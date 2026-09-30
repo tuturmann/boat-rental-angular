@@ -22,44 +22,60 @@ export interface Boat {
 @Component({
   selector: 'app-fleet-list',
   standalone: true,
-  imports: [MatTableModule, CapacitePipe, LongueurPipe, CurrencyPipe, PermisPipe, RouterLink, MatButton],
+  imports: [
+    MatTableModule,
+    CapacitePipe,
+    LongueurPipe,
+    CurrencyPipe,
+    PermisPipe,
+    RouterLink,
+    MatButton,
+  ],
   styleUrl: './fleet-list.scss',
   templateUrl: './fleet-list.html',
 })
-
-
 export class FleetList implements OnInit {
   private fleetService = inject(FleetService);
   // le MatTAbleDataSource permet de rafraîchir automatiquement quand on affect fleetListe.data à bateaux, ce que Boat<>[] ne fait pas
   public fleetList = new MatTableDataSource<Boat>([]);
 
-  colonnes: string[] = ['nom', 'type', 'capacite', 'longueur', 'tarif', 'caution', 'permis', 'actions'];
+  colonnes: string[] = [
+    'nom',
+    'type',
+    'capacite',
+    'longueur',
+    'tarif',
+    'caution',
+    'permis',
+    'actions',
+  ];
 
-  boatToEdit : Boat | null = null;
-  boatToDelete : Boat | null = null;
+  boatToEdit: Boat | null = null;
+  boatToDelete: Boat | null = null;
 
   ngOnInit(): void {
     this.loadFleet();
   }
 
   loadFleet(): void {
-  this.fleetService.getFleet().subscribe(bateaux => {
-    this.fleetList.data = bateaux;
-  });
-}
+    this.fleetService.getFleet().subscribe((bateaux) => {
+      this.fleetList.data = bateaux;
+    });
+  }
 
-  onEdit(boat: Boat){
+  onEdit(boat: Boat) {
     this.boatToEdit = boat;
   }
 
-  onDelete(boat: Boat){
+  onDelete(boat: Boat) {
     if (this.boatToDelete == boat) {
-      this.fleetService.deleteBoat(boat).subscribe(deletion => {console.log(deletion)});
+      this.fleetService.deleteBoat(boat).subscribe((deletion) => {
+        console.log(deletion);
+      });
       this.loadFleet();
-    }
-    else {
+    } else {
       this.boatToDelete = boat;
-      return;      
+      return;
     }
   }
 }

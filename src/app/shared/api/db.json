@@ -77,31 +77,31 @@
   ],
   "reservationsList": [
     {
-        "client": 3,
-        "bateau": 1,
-        "debut": "2026-05-15",
-        "fin": "2026-05-15",
-        "personnes": 6,
-        "prix": 180,
-        "statut": "À venir"
+      "client": 3,
+      "bateau": 1,
+      "debut": "2026-05-15",
+      "fin": "2026-05-15",
+      "personnes": 6,
+      "prix": 180,
+      "statut": "À venir"
     },
     {
-        "client": 2,
-        "bateau": 1,
-        "debut": "2026-05-18",
-        "fin": "2026-05-20",
-        "personnes": 5,
-        "prix": 540,
-        "statut": "À venir"
+      "client": 2,
+      "bateau": 1,
+      "debut": "2026-05-18",
+      "fin": "2026-05-20",
+      "personnes": 5,
+      "prix": 540,
+      "statut": "À venir"
     },
     {
-        "client": 4,
-        "bateau": 2,
-        "debut": "2026-05-22",
-        "fin": "2026-05-28",
-        "personnes": 8,
-        "prix": 3920,
-        "statut": "À venir"
+      "client": 4,
+      "bateau": 2,
+      "debut": "2026-05-22",
+      "fin": "2026-05-28",
+      "personnes": 8,
+      "prix": 3920,
+      "statut": "À venir"
     }
-    ]
+  ]
 }

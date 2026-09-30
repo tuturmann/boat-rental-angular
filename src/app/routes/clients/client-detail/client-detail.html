@@ -1,8 +1,8 @@
 @if (client()) {
   <div class="infos">
-    <span>Nom du client : {{client()?.nom}}</span>
-    <span>Prénom : {{client()?.prenom}}</span>
-    <span>Adresse e-mail : {{client()?.email}}</span>
+    <span>Nom du client : {{ client()?.nom }}</span>
+    <span>Prénom : {{ client()?.prenom }}</span>
+    <span>Adresse e-mail : {{ client()?.email }}</span>
   </div>
 } @else {
   <p>Chargement des données du client...</p>

@@ -8,13 +8,21 @@ import { MatOption, MatSelect, MatSelectModule } from '@angular/material/select'
 import { FleetService } from '../services/fleet';
 
 @Component({
-  imports: [MatFormFieldModule, MatSelect, MatSelectModule, MatOption, MatInputModule,MatCheckboxModule,ReactiveFormsModule, MatButton],
+  imports: [
+    MatFormFieldModule,
+    MatSelect,
+    MatSelectModule,
+    MatOption,
+    MatInputModule,
+    MatCheckboxModule,
+    ReactiveFormsModule,
+    MatButton,
+  ],
   selector: 'app-fleet-form',
   styleUrl: './fleet-form.scss',
   templateUrl: './fleet-form.html',
 })
 export class FleetForm {
-  
   private fleetService = inject(FleetService);
   boatForm!: FormGroup;
 
@@ -27,26 +35,27 @@ export class FleetForm {
       longueur: new FormControl('', [Validators.min(1)]),
       tarif: new FormControl('', [Validators.min(0)]),
       caution: new FormControl('', [Validators.min(0)]),
-      permis: new FormControl(false) // Valeur initiale pour la checkbox
+      permis: new FormControl(false), // Valeur initiale pour la checkbox
     });
   }
-  
-  onSubmit(){
+
+  onSubmit() {
     if (this.boatForm.invalid) {
-      return; 
+      return;
     }
 
     let submittedBoat = this.boatForm.value;
 
-
-    this.fleetService.addBoat(
-      submittedBoat.nom,
-      submittedBoat.type,
-      submittedBoat.capacite,
-      submittedBoat.longueur,
-      submittedBoat.tarif,
-      submittedBoat.caution,
-      submittedBoat.permis).subscribe();
-    }
-    
+    this.fleetService
+      .addBoat(
+        submittedBoat.nom,
+        submittedBoat.type,
+        submittedBoat.capacite,
+        submittedBoat.longueur,
+        submittedBoat.tarif,
+        submittedBoat.caution,
+        submittedBoat.permis,
+      )
+      .subscribe();
+  }
 }

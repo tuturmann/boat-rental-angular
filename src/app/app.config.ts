@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideHttpClient(),
-    { provide: LOCALE_ID, useValue: 'fr-FR' }
-  ]
+    { provide: LOCALE_ID, useValue: 'fr-FR' },
+  ],
 };

@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Reservation } from '../reservation-list/reservation-list';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ReservationsService {
   private http = inject(HttpClient);
@@ -14,12 +14,20 @@ export class ReservationsService {
     return this.http.get<Reservation[]>(`${this.baseUrl}/reservationsList`);
   }
 
-  deleteReservation(reservation: Reservation){
+  deleteReservation(reservation: Reservation) {
     return this.http.delete(`${this.baseUrl}/reservationsList/${reservation.id}`);
   }
 
-  addReservation(nom: string, type: string, capacite: number, longueur: number, tarif: number, caution: number, permis: boolean){
+  addReservation(
+    nom: string,
+    type: string,
+    capacite: number,
+    longueur: number,
+    tarif: number,
+    caution: number,
+    permis: boolean,
+  ) {
     const body = { nom, type, capacite, longueur, tarif, caution, permis };
-    return this.http.post<Reservation>(`${this.baseUrl}/reservationsList`, body)
+    return this.http.post<Reservation>(`${this.baseUrl}/reservationsList`, body);
   }
 }

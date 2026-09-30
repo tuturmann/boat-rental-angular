@@ -12,7 +12,7 @@ export interface Reservation {
   fin: Date;
   personnes: number;
   prix: number;
-  statut: "À venir" | "En cours" | "Passé";
+  statut: 'À venir' | 'En cours' | 'Passé';
 }
 
 @Component({
@@ -21,13 +21,11 @@ export interface Reservation {
   styleUrl: './reservation-list.scss',
   templateUrl: './reservation-list.html',
 })
-
-
 export class ReservationList {
   private reservationsService = inject(ReservationsService);
   public reservationsList = new MatTableDataSource<Reservation>([]);
 
-  reservationToDelete : Reservation | null = null;
+  reservationToDelete: Reservation | null = null;
 
   colonnes: string[] = ['client', 'bateau', 'debut', 'fin', 'personnes', 'prix', 'statut'];
 
@@ -36,19 +34,20 @@ export class ReservationList {
   }
 
   loadReservation(): void {
-  this.reservationsService.getReservation().subscribe(bateaux => {
-    this.reservationsList.data = bateaux;
-  });
-}
+    this.reservationsService.getReservation().subscribe((bateaux) => {
+      this.reservationsList.data = bateaux;
+    });
+  }
 
-  onDelete(reservation: Reservation){
+  onDelete(reservation: Reservation) {
     if (this.reservationToDelete == reservation) {
-      this.reservationsService.deleteReservation(reservation).subscribe(deletion => {console.log(deletion)});
+      this.reservationsService.deleteReservation(reservation).subscribe((deletion) => {
+        console.log(deletion);
+      });
       this.loadReservation();
-    }
-    else {
+    } else {
       this.reservationToDelete = reservation;
-      return;      
+      return;
     }
   }
 }
