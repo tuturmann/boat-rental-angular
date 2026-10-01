@@ -1,0 +1,23 @@
+.statut {
+  border-radius: 15px;
+  padding: 10px;
+}
+.upcoming > .statut {
+  background-color: rgb(236, 176, 255);
+  color: rgb(80, 23, 98);
+}
+
+.ongoing > .statut {
+  background-color: rgb(176, 230, 255);
+  color: rgb(23, 78, 98);
+}
+
+.finished > .statut {
+  background-color: rgb(196, 255, 176);
+  color: rgb(38, 98, 23);
+}
+
+.cancelled > .statut {
+  background-color: rgb(255, 151, 151);
+  color: rgb(98, 23, 23);
+}

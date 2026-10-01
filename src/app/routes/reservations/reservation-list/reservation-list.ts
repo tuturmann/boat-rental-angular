@@ -4,7 +4,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ClientsService } from '../../clients/services/clients';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 
 export interface Reservation {
   id: number;
@@ -19,7 +19,7 @@ export interface Reservation {
 }
 
 @Component({
-  imports: [MatTableModule, RouterLink, MatButton, CurrencyPipe],
+  imports: [MatTableModule, RouterLink, MatButton, CurrencyPipe, NgClass],
   selector: 'app-reservation-list',
   styleUrl: './reservation-list.scss',
   templateUrl: './reservation-list.html',

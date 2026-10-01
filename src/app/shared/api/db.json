@@ -92,7 +92,7 @@
       "fin": "2026-05-20",
       "personnes": 5,
       "prix": 540,
-      "statut": "À venir"
+      "statut": "En cours"
     },
     {
       "client": 4,
@@ -101,7 +101,16 @@
       "fin": "2026-05-28",
       "personnes": 8,
       "prix": 3920,
-      "statut": "À venir"
+      "statut": "Terminée"
+    },
+    {
+      "client": 4,
+      "bateau": 3,
+      "debut": "2026-05-22",
+      "fin": "2026-05-28",
+      "personnes": 8,
+      "prix": 3920,
+      "statut": "Annulée"
     }
   ]
 }
