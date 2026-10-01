@@ -55,6 +55,33 @@
       "email": "lea.vinci@email.fr",
       "telephone": "0645678901",
       "permis": false
+    },
+    {
+      "nom": "test",
+      "prenom": "test2",
+      "email": "test@gmail.com",
+      "phone": "0909090909",
+      "permisBateau": true,
+      "statut": "Actif",
+      "id": 5
+    },
+    {
+      "nom": "test",
+      "prenom": "test2",
+      "email": "test@gmail",
+      "phone": "0909090909",
+      "permisBateau": true,
+      "statut": "Actif",
+      "id": 6
+    },
+    {
+      "nom": "test",
+      "prenom": "test",
+      "email": "test@est",
+      "telephone": "0606060606",
+      "permisBateau": true,
+      "statut": "Actif",
+      "id": 7
     }
   ],
   "reservationsList": [

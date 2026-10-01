@@ -1,1 +1,42 @@
-<p>client-form works!</p>
+<div class="top-bar">
+  <div class="page-description">
+    <h1>Clients</h1>
+    <p>Ajouter un client dans le catalogue</p>
+  </div>
+</div>
+
+<form [formGroup]="clientForm" (ngSubmit)="onSubmit()" class="form-container">
+  <mat-form-field>
+    <mat-label>Nom</mat-label>
+    <input matInput formControlName="nom" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Prénom</mat-label>
+    <input matInput formControlName="prenom" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput type="email" formControlName="email" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Téléphone</mat-label>
+    <input matInput type="tel" formControlName="telephone" required />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Statut</mat-label>
+    <mat-select formControlName="statut">
+      <mat-option value="Actif">Actif</mat-option>
+      <mat-option value="A risque">A risque</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="checkbox-container">
+    <mat-checkbox formControlName="permisBateau">Permis bateau possédé</mat-checkbox>
+  </div>
+
+  <button mat-button type="submit">Enregistrer le client</button>
+</form>

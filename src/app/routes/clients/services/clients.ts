@@ -20,8 +20,15 @@ export class ClientsService {
     return this.http.delete(`${this.baseUrl}/clientList/${client.id}`);
   }
 
-  addClient(nom: string, prenom: string, phone: number, permisBateau: number) {
-    const body = { nom, prenom, phone, permisBateau };
+  addClient(
+    nom: string,
+    prenom: string,
+    email: string,
+    telephone: number,
+    permisBateau: number,
+    statut: string,
+  ) {
+    const body = { nom, prenom, email, telephone, permisBateau, statut };
     alert('Client créé');
     return this.http.post<Client>(`${this.baseUrl}/clientList`, body);
   }
