@@ -3,7 +3,6 @@ import { ReservationsService } from '../services/reservations';
 import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { ClientIdToNamePipe } from '../../../shared/pipes/client-id-to-name/client-id-to-name-pipe';
 import { ClientsService } from '../../clients/services/clients';
 
 export interface Reservation {
@@ -19,7 +18,7 @@ export interface Reservation {
 }
 
 @Component({
-  imports: [MatTableModule, RouterLink, MatButton, ClientIdToNamePipe],
+  imports: [MatTableModule, RouterLink, MatButton],
   selector: 'app-reservation-list',
   styleUrl: './reservation-list.scss',
   templateUrl: './reservation-list.html',
@@ -40,13 +39,17 @@ export class ReservationList {
 
   loadReservation(): void {
     this.reservationsService.getReservation().subscribe((reservation) => {
+      // là c'est sensé s'afficher sans le nom car je le récupère après
       console.log(reservation);
+      // là je récupère le nom avec le ClientsService getById
       reservation.forEach((reservation) => {
         this.clientsService.getClientById(reservation.client).subscribe((m) => {
           reservation.clientName = m.nom;
         });
       });
+      // et là c'est sensé s'afficher avec le nom car je l'ai récupéré
       console.log(reservation);
+      // là comme j'ai une MatTableDataSource, si j'affecte .data c'est sensé se rafraîchir sur la colonne Client
       this.reservationsList.data = reservation;
     });
   }
