@@ -9,6 +9,7 @@ L'application est découpée en plusieurs modules et pages :
 
 - Page d'accueil : Tableau de bord et vue d'ensemble de l'application.
 - Flotte (Gestion des Bateaux) :
+  - CRUD complet : Liste (Read), Ajout (Create), Modification (Update) et Suppression (Delete).
   - Liste et visualisation des bateaux disponibles.
   - Ajout, modification et suppression de bateaux.
   - Sécurité de suppression : Impossible de supprimer un bateau si celui-ci possède des réservations actives dans la base de données.

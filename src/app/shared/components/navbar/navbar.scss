@@ -1,8 +1,9 @@
+@use '../../../../variables';
 div {
   display: flex;
   flex-direction: column;
 }
 
 .active {
-  background-color: #e8def8;
+  background-color: variables.$highlight-color;
 }
