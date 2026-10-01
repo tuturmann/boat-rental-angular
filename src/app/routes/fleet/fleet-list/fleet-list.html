@@ -7,7 +7,7 @@
 </div>
 <div class="searchbar">
   <label for="site-search">Recherche</label>
-  <input type="search" />
+  <input type="search" (input)="rechercheByName($event)" />
 </div>
 <table mat-table [dataSource]="fleetList">
   <ng-container matColumnDef="nom">

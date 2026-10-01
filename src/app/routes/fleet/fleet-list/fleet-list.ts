@@ -78,4 +78,11 @@ export class FleetList implements OnInit {
       return;
     }
   }
+
+  rechercheByName(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const valeur = inputElement.value.toLowerCase().trim();
+    console.log(valeur);
+    this.fleetList.filter = valeur.trim().toLowerCase();
+  }
 }

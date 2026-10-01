@@ -12,7 +12,9 @@
 <table mat-table [dataSource]="reservationsList">
   <ng-container matColumnDef="client">
     <th mat-header-cell *matHeaderCellDef>Client</th>
-    <td mat-cell *matCellDef="let reservation" class="highlight">{{ reservation.client }}</td>
+    <td mat-cell *matCellDef="let reservation" class="highlight">
+      {{ reservation.clientName }}
+    </td>
   </ng-container>
   <ng-container matColumnDef="bateau">
     <th mat-header-cell *matHeaderCellDef>Bateau</th>
