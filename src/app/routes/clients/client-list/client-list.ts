@@ -52,10 +52,9 @@ export class ClientList implements OnInit {
     }
   }
 
-  rechercheByName(event: Event) {
+  recherche(event: Event) {
     const inputElement = event.target as HTMLInputElement;
-    const valeur = inputElement.value.toLowerCase().trim();
-    console.log(valeur);
+    const valeur = inputElement.value;
     this.clientList.filter = valeur.trim().toLowerCase();
   }
 }
