@@ -7,6 +7,7 @@ import { CurrencyPipe } from '@angular/common';
 import { PermisPipe } from '../../../shared/pipes/permis/permis-pipe';
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
+import { ReservationsService } from '../../reservations/services/reservations';
 
 export interface Boat {
   id: string;
@@ -36,6 +37,8 @@ export interface Boat {
 })
 export class FleetList implements OnInit {
   private fleetService = inject(FleetService);
+  private reservationsService = inject(ReservationsService);
+
   // le MatTAbleDataSource permet de rafraîchir automatiquement quand on affect fleetListe.data à bateaux, ce que Boat<>[] ne fait pas
   public fleetList = new MatTableDataSource<Boat>([]);
 
@@ -68,15 +71,26 @@ export class FleetList implements OnInit {
   }
 
   onDelete(boat: Boat) {
-    if (this.boatToDelete == boat) {
-      this.fleetService.deleteBoat(boat).subscribe((deletion) => {
-        console.log(deletion);
-      });
-      this.loadFleet();
-    } else {
+    if (this.boatToDelete !== boat) {
       this.boatToDelete = boat;
       return;
     }
+
+    this.reservationsService.getReservationByBoat(+boat.id).subscribe((reservations) => {
+      const nbReservationsActives = reservations.length;
+
+      if (nbReservationsActives > 0) {
+        alert(
+          'Vous ne pouvez pas supprimer ce bateau car au moins une réservation existe pour ce bateau.',
+        );
+        return;
+      } else {
+        this.fleetService.deleteBoat(boat)?.subscribe(() => {
+          alert(`Le bateau ${boat.nom} a bien été supprimé`);
+          this.loadFleet();
+        });
+      }
+    });
   }
 
   recherche(event: Event) {

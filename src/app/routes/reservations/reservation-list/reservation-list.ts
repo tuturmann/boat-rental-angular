@@ -5,12 +5,15 @@ import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ClientsService } from '../../clients/services/clients';
 import { CurrencyPipe, NgClass } from '@angular/common';
+import { forkJoin, switchMap, map } from 'rxjs';
+import { FleetService } from '../../fleet/services/fleet';
 
 export interface Reservation {
   id: number;
   client: number;
   clientName?: string;
   bateau: number;
+  bateauName?: string;
   debut: Date;
   fin: Date;
   personnes: number;
@@ -27,6 +30,7 @@ export interface Reservation {
 export class ReservationList {
   private reservationsService = inject(ReservationsService);
   private clientsService = inject(ClientsService);
+  private fleetService = inject(FleetService);
 
   public reservationsList = new MatTableDataSource<Reservation>([]);
 
@@ -39,20 +43,37 @@ export class ReservationList {
   }
 
   loadReservation(): void {
-    this.reservationsService.getReservation().subscribe((reservation) => {
-      // là c'est sensé s'afficher sans le nom car je le récupère après
-      console.log(reservation);
-      // là je récupère le nom avec le ClientsService getById
-      reservation.forEach((reservation) => {
-        this.clientsService.getClientById(reservation.client).subscribe((m) => {
-          reservation.clientName = m.nom;
-        });
+    this.reservationsService
+      .getReservation()
+      .pipe(
+        switchMap((reservations) => {
+          if (reservations.length === 0) {
+            return [[]];
+          }
+
+          const allRequests = reservations.map((res) =>
+            forkJoin({
+              client: this.clientsService.getClientById(res.client),
+              bateau: this.fleetService.getBoatById(res.bateau),
+            }).pipe(
+              map(({ client, bateau }) => {
+                res.clientName = `${client.prenom} ${client.nom}`;
+                res.bateauName = bateau.nom;
+                return res;
+              }),
+            ),
+          );
+
+          return forkJoin(allRequests);
+        }),
+      )
+      .subscribe({
+        next: (reservationsAvecNoms) => {
+          console.log(reservationsAvecNoms);
+          this.reservationsList.data = reservationsAvecNoms;
+        },
+        error: (err) => console.error(err),
       });
-      // et là c'est sensé s'afficher avec le nom car je l'ai récupéré
-      console.log(reservation);
-      // là comme j'ai une MatTableDataSource, si j'affecte .data c'est sensé se rafraîchir sur la colonne Client
-      this.reservationsList.data = reservation;
-    });
   }
 
   onDelete(reservation: Reservation) {

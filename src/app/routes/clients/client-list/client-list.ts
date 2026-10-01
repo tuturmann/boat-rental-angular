@@ -3,6 +3,7 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { ClientsService } from '../services/clients';
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
+import { ReservationsService } from '../../reservations/services/reservations';
 
 export interface Client {
   id: string;
@@ -23,6 +24,7 @@ export interface Client {
 })
 export class ClientList implements OnInit {
   private clientsService = inject(ClientsService);
+  private reservationsService = inject(ReservationsService);
   public clientList = new MatTableDataSource<Client>([]);
 
   colonnes: string[] = ['nom', 'prenom', 'email', 'telephone', 'permisBateau', 'actions'];
@@ -41,15 +43,26 @@ export class ClientList implements OnInit {
   }
 
   onDelete(client: Client) {
-    if (this.clientToDelete == client) {
-      this.clientsService.deleteClient(client).subscribe((deletion) => {
-        console.log(deletion);
-      });
-      this.loadClient();
-    } else {
+    if (this.clientToDelete !== client) {
       this.clientToDelete = client;
       return;
     }
+
+    this.reservationsService.getReservationByClient(+client.id).subscribe((reservations) => {
+      const nbReservationsActives = reservations.length;
+
+      if (nbReservationsActives > 0) {
+        alert(
+          'Vous ne pouvez pas supprimer ce client car au moins une réservation existe pour ce client.',
+        );
+        return;
+      } else {
+        this.clientsService.deleteClient(client)?.subscribe(() => {
+          alert(`Le client ${client.prenom} ${client.nom} a bien été supprimé`);
+          this.loadClient();
+        });
+      }
+    });
   }
 
   recherche(event: Event) {

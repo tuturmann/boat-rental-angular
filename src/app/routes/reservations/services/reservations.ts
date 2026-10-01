@@ -14,6 +14,14 @@ export class ReservationsService {
     return this.http.get<Reservation[]>(`${this.baseUrl}/reservationsList`);
   }
 
+  getReservationByBoat(boatId: number) {
+    return this.http.get<Reservation[]>(`${this.baseUrl}/reservationsList?bateau=${boatId}`);
+  }
+
+  getReservationByClient(clientId: number) {
+    return this.http.get<Reservation[]>(`${this.baseUrl}/reservationsList?client=${clientId}`);
+  }
+
   deleteReservation(reservation: Reservation) {
     return this.http.delete(`${this.baseUrl}/reservationsList/${reservation.id}`);
   }

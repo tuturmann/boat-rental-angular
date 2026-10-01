@@ -1,17 +1,23 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Boat } from '../fleet-list/fleet-list';
+import { ReservationsService } from '../../reservations/services/reservations';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FleetService {
   private http = inject(HttpClient);
+  private reservationsService = inject(ReservationsService);
 
   private baseUrl = 'http://localhost:3000';
 
   getFleet() {
     return this.http.get<Boat[]>(`${this.baseUrl}/fleetList`);
+  }
+
+  getBoatById(id: number) {
+    return this.http.get<Boat>(`${this.baseUrl}/fleetList/${id}`);
   }
 
   deleteBoat(boat: Boat) {
