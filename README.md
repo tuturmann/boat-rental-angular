@@ -1,59 +1,26 @@
-# TpAngular
+# TP Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.2.0.
+Ce projet a été créé dans le cadre d'une formation Angular que j'ai suivie. \
+Il s'agit d'une application de gestion pour une entreprise de location de bateaux.
 
-## Development server
+# Fonctionnalités
 
-To start a local development server, run:
+L'application est découpée en plusieurs modules et pages :
 
-```bash
-ng serve
-```
+- Page d'accueil : Tableau de bord et vue d'ensemble de l'application.
+- Flotte (Gestion des Bateaux) :
+  - Liste et visualisation des bateaux disponibles.
+  - Ajout, modification et suppression de bateaux.
+  - Sécurité de suppression : Impossible de supprimer un bateau si celui-ci possède des réservations actives dans la base de données.
+  - Filtrage des données par n'importe quelle colonne de la liste.
+- Clients : Gestion du répertoire des clients (Nom, Prénom, etc.).
+- Réservations :
+  - Liste complète des réservations de l'entreprise.
+  - Enrichissement asynchrone des données (RxJS) : Pour chaque réservation, l'application récupère en parallèle et en temps réel le nom complet du client ainsi que le nom du bateau associé grâce à des mécanismes de flux (`forkJoin`, `switchMap`).
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+## Technologies utilisées
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- Angular (Architecture par composants, Services, Pipes...)
+- RxJS (Gestion des flux asynchrones, opérateurs `switchMap`, `map`, `forkJoin`)
+- JSON Server (Simulateur d'API REST basé sur un fichier `db.json`)
+- SCSS (Préprocesseur CSS pour une architecture de styles modulable et maintenable)

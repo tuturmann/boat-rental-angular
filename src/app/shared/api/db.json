@@ -1,7 +1,7 @@
 {
   "fleetList": [
     {
-      "id": 3,
+      "id": 1,
       "nom": "Petit Phare",
       "type": "Semi-rigide",
       "capacite": 8,
@@ -11,7 +11,7 @@
       "permis": false
     },
     {
-      "id": 5,
+      "id": 2,
       "nom": "Calypso",
       "type": "Voilier",
       "capacite": 10,
@@ -28,28 +28,10 @@
       "tarif": 123,
       "caution": 213,
       "permis": true,
-      "id": 13
-    },
-    {
-      "nom": "Bateau",
-      "type": "Bateau à moteur",
-      "capacite": 123,
-      "longueur": 23,
-      "tarif": 3,
-      "caution": 4,
-      "permis": false,
-      "id": 14
+      "id": 3
     }
   ],
   "clientList": [
-    {
-      "id": 1,
-      "nom": "Bernard",
-      "prenom": "Camille",
-      "email": "camille.bernard@email.fr",
-      "telephone": "0612345678",
-      "permis": true
-    },
     {
       "id": 2,
       "nom": "Roussel",
