@@ -8,7 +8,6 @@ import { ReservationsService } from '../../reservations/services/reservations';
 })
 export class FleetService {
   private http = inject(HttpClient);
-  private reservationsService = inject(ReservationsService);
 
   private baseUrl = 'http://localhost:3000';
 
@@ -22,6 +21,10 @@ export class FleetService {
 
   deleteBoat(boat: Boat) {
     return this.http.delete(`${this.baseUrl}/fleetList/${boat.id}`);
+  }
+
+  updateBoat(boat: Boat) {
+    return this.http.put<Boat>(`${this.baseUrl}/fleetList/${boat.id}`, boat);
   }
 
   addBoat(

@@ -11,3 +11,18 @@
 .second-click {
   background-color: red;
 }
+
+.input-cell {
+  display: none !important;
+}
+.text-cell {
+  display: inline !important;
+}
+
+.editMode .input-cell {
+  display: inline-block !important;
+  width: 100%;
+}
+.editMode .text-cell {
+  display: none !important;
+}

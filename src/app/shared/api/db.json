@@ -5,10 +5,10 @@
       "nom": "Petit Phare",
       "type": "Semi-rigide",
       "capacite": 8,
-      "longueur": 6,
-      "tarif": 180,
+      "longueur": 1,
+      "tarif": 111,
       "caution": 800,
-      "permis": false
+      "permis": true
     },
     {
       "id": 2,
@@ -29,6 +29,46 @@
       "caution": 213,
       "permis": true,
       "id": 3
+    },
+    {
+      "nom": "aaa",
+      "type": "Voilier",
+      "capacite": 1,
+      "longueur": 1,
+      "tarif": 2,
+      "caution": 123,
+      "permis": true,
+      "id": 4
+    },
+    {
+      "nom": "aaa",
+      "type": "Voilier",
+      "capacite": 1,
+      "longueur": 1,
+      "tarif": 2,
+      "caution": 123,
+      "permis": true,
+      "id": 5
+    },
+    {
+      "nom": "&",
+      "type": "Voilier",
+      "capacite": 123,
+      "longueur": 123,
+      "tarif": 123,
+      "caution": 213,
+      "permis": true,
+      "id": 6
+    },
+    {
+      "nom": "&",
+      "type": "Voilier",
+      "capacite": 123,
+      "longueur": 123,
+      "tarif": 123,
+      "caution": 213,
+      "permis": true,
+      "id": 7
     }
   ],
   "clientList": [
@@ -82,6 +122,15 @@
       "permisBateau": true,
       "statut": "Actif",
       "id": 7
+    },
+    {
+      "nom": "a",
+      "prenom": "b",
+      "email": "c@c.com",
+      "telephone": "023590385",
+      "permisBateau": true,
+      "statut": "Actif",
+      "id": 8
     }
   ],
   "reservationsList": [

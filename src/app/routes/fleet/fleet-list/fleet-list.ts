@@ -3,11 +3,12 @@ import { MatTableDataSource, MatTableModule } from '@angular/material/table';
 import { FleetService } from '../services/fleet';
 import { CapacitePipe } from '../../../shared/pipes/capacite/capacite-pipe';
 import { LongueurPipe } from '../../../shared/pipes/longueur/longueur-pipe';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, NgClass } from '@angular/common';
 import { PermisPipe } from '../../../shared/pipes/permis/permis-pipe';
 import { RouterLink } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { ReservationsService } from '../../reservations/services/reservations';
+import { FormsModule } from '@angular/forms';
 
 export interface Boat {
   id: string;
@@ -31,6 +32,8 @@ export interface Boat {
     PermisPipe,
     RouterLink,
     MatButton,
+    NgClass,
+    FormsModule,
   ],
   styleUrl: './fleet-list.scss',
   templateUrl: './fleet-list.html',
@@ -67,7 +70,12 @@ export class FleetList implements OnInit {
   }
 
   onEdit(boat: Boat) {
-    this.boatToEdit = boat;
+    if (this.boatToEdit === boat) {
+      this.fleetService.updateBoat(boat).subscribe((m) => console.log('Bateau maj OK', m));
+      this.boatToEdit = null;
+    } else {
+      this.boatToEdit = boat;
+    }
   }
 
   onDelete(boat: Boat) {
