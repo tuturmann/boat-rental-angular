@@ -27,7 +27,6 @@ export class FleetForm {
   boatForm!: FormGroup;
 
   ngOnInit() {
-    // 2. Initialisation des contrôles (champs) avec leurs valeurs par défaut
     this.boatForm = new FormGroup({
       nom: new FormControl('', [Validators.required]),
       type: new FormControl(''),
@@ -35,7 +34,7 @@ export class FleetForm {
       longueur: new FormControl('', [Validators.min(1)]),
       tarif: new FormControl('', [Validators.min(0)]),
       caution: new FormControl('', [Validators.min(0)]),
-      permis: new FormControl(false), // Valeur initiale pour la checkbox
+      permis: new FormControl(false),
     });
   }
 

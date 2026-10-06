@@ -59,16 +59,6 @@
       "caution": 213,
       "permis": true,
       "id": 6
-    },
-    {
-      "nom": "&",
-      "type": "Voilier",
-      "capacite": 123,
-      "longueur": 123,
-      "tarif": 123,
-      "caution": 213,
-      "permis": true,
-      "id": 7
     }
   ],
   "clientList": [

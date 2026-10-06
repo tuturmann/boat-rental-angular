@@ -69,7 +69,6 @@ export class ReservationList {
       )
       .subscribe({
         next: (reservationsAvecNoms) => {
-          console.log(reservationsAvecNoms);
           this.reservationsList.data = reservationsAvecNoms;
         },
         error: (err) => console.error(err),
@@ -79,7 +78,7 @@ export class ReservationList {
   onDelete(reservation: Reservation) {
     if (this.reservationToDelete == reservation) {
       this.reservationsService.deleteReservation(reservation).subscribe((deletion) => {
-        console.log(deletion);
+        alert('deletion ok');
       });
       this.loadReservation();
     } else {

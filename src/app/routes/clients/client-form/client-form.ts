@@ -32,7 +32,7 @@ export class ClientForm implements OnInit {
       prenom: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
       telephone: new FormControl('', [Validators.required]),
-      statut: new FormControl('Actif'), // Valeur par défaut basée sur ton type union
+      statut: new FormControl('Actif'),
       permisBateau: new FormControl(false),
     });
   }

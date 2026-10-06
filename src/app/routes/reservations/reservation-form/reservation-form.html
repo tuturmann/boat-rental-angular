@@ -1,1 +1,116 @@
-<p>reservation-form works!</p>
+<div class="top-bar">
+  <div class="page-description">
+    <h1>Nouvelle réservation</h1>
+  </div>
+</div>
+
+<div class="page">
+  <form [formGroup]="reservationsForm" (ngSubmit)="onSubmit()" class="form-container">
+    <mat-form-field class="autocomplete">
+      <mat-label>Client</mat-label>
+      <input
+        matInput
+        formControlName="client"
+        [formControl]="reservationsControlClient"
+        required
+        [matAutocomplete]="autoClient"
+      />
+      <mat-autocomplete #autoClient="matAutocomplete" [displayWith]="displayClient">
+        @for (option of filteredOptionsClient | async; track option) {
+          <mat-option [value]="option">{{ option.nom }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Bateau</mat-label>
+      <input
+        matInput
+        formControlName="bateau"
+        [formControl]="reservationsControlBoat"
+        required
+        [matAutocomplete]="autoBoat"
+      />
+      <mat-autocomplete #autoBoat="matAutocomplete" [displayWith]="displayBoat">
+        @for (option of filteredOptionsBoat | async; track option) {
+          <mat-option [value]="option">{{ option.nom }}</mat-option>
+        }
+      </mat-autocomplete>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de début</mat-label>
+      <input matInput [matDatepicker]="datepickerDebut" formControlName="dateDebut" required />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="datepickerDebut"></mat-datepicker-toggle>
+      <mat-datepicker #datepickerDebut>
+        <mat-datepicker-actions>
+          <button matButton matDatepickerCancel>Cancel</button>
+          <button matButton="elevated" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Date de fin</mat-label>
+      <input matInput [matDatepicker]="datepickerFin" formControlName="dateFin" required />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle matIconSuffix [for]="datepickerFin"></mat-datepicker-toggle>
+      <mat-datepicker #datepickerFin>
+        <mat-datepicker-actions>
+          <button matButton matDatepickerCancel>Cancel</button>
+          <button matButton="elevated" matDatepickerApply>Apply</button>
+        </mat-datepicker-actions>
+      </mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Nombre de personnes</mat-label>
+      <input matInput formControlName="nombrePersonnes" required />
+    </mat-form-field>
+
+    <button mat-button type="submit">Réserver</button>
+  </form>
+
+  <div class="recapitulatif">
+    <div class="title">
+      <h1>Récapitulatif</h1>
+      <span>Calculé automatiquement</span>
+    </div>
+    <div class="calculs">
+      <div class="item">
+        <span>Client</span>
+        <span>{{ this.reservationsForm.value?.client || '—' }}</span>
+      </div>
+      <div class="item">
+        <span>Bateau</span>
+        <span>—</span>
+      </div>
+      <div class="item">
+        <span>Période</span>
+        <span>—</span>
+      </div>
+      <div class="item">
+        <span>Durée</span>
+        <span>—</span>
+      </div>
+      <div class="item">
+        <span>Personnes</span>
+        <span>—</span>
+      </div>
+      <div class="separator"></div>
+      <div class="item">
+        <span>Tarif journalier</span>
+        <span>—</span>
+      </div>
+      <div class="item">
+        <span>Prix total</span>
+        <span>—</span>
+      </div>
+      <div class="item">
+        <span>Caution</span>
+        <span>—</span>
+      </div>
+    </div>
+  </div>
+</div>

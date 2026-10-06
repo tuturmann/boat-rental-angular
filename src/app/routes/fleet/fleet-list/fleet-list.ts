@@ -71,7 +71,7 @@ export class FleetList implements OnInit {
 
   onEdit(boat: Boat) {
     if (this.boatToEdit === boat) {
-      this.fleetService.updateBoat(boat).subscribe((m) => console.log('Bateau maj OK', m));
+      this.fleetService.updateBoat(boat).subscribe((m) => alert('Bateau maj OK'));
       this.boatToEdit = null;
     } else {
       this.boatToEdit = boat;

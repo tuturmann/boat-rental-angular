@@ -13,16 +13,16 @@
 }
 
 .input-cell {
-  display: none !important;
+  display: none;
 }
 .text-cell {
-  display: inline !important;
+  display: inline;
 }
 
 .editMode .input-cell {
-  display: inline-block !important;
+  display: inline-block;
   width: 100%;
 }
 .editMode .text-cell {
-  display: none !important;
+  display: none;
 }

@@ -1,6 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Reservation } from '../reservation-list/reservation-list';
+import { Client } from '../../clients/client-list/client-list';
+import { Boat } from '../../fleet/fleet-list/fleet-list';
 
 @Injectable({
   providedIn: 'root',
@@ -27,15 +29,14 @@ export class ReservationsService {
   }
 
   addReservation(
-    nom: string,
-    type: string,
-    capacite: number,
-    longueur: number,
-    tarif: number,
-    caution: number,
-    permis: boolean,
+    clientId: number,
+    bateauId: number,
+    debut: Date,
+    fin: Date,
+    personnes: number,
+    prix: number,
   ) {
-    const body = { nom, type, capacite, longueur, tarif, caution, permis };
+    const body = { clientId, bateauId, debut, fin, personnes, prix, statut: 'À venir' };
     return this.http.post<Reservation>(`${this.baseUrl}/reservationsList`, body);
   }
 }
