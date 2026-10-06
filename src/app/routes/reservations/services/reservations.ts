@@ -43,8 +43,25 @@ export class ReservationsService {
       fin: fin,
       personnes: +personnes,
       prix: +prix,
-      statut: 'À venir',
+      statut: this.getStatut(debut, fin),
     };
     return this.http.post<Reservation>(`${this.baseUrl}/reservationsList`, body);
+  }
+
+  getStatut(dateDebut: Date, dateFin: Date): string {
+    const nowMs: number = Date.now();
+    const debutMs: number = dateDebut.getTime();
+    const finMs: number = dateFin.getTime();
+
+    if (debutMs > nowMs) {
+      return 'À venir';
+    } else {
+      if (finMs >= nowMs) {
+        return 'En cours';
+      } else {
+        return 'Terminée';
+      }
+    }
+    return '';
   }
 }

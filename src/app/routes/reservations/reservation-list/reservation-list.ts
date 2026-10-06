@@ -86,4 +86,10 @@ export class ReservationList {
       return;
     }
   }
+
+  recherche(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    const valeur = inputElement.value.toLowerCase().trim();
+    this.reservationsList.filter = valeur;
+  }
 }

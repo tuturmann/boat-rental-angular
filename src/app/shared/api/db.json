@@ -173,6 +173,46 @@
       "prix": 4063266,
       "statut": "À venir",
       "id": 5
+    },
+    {
+      "client": 3,
+      "bateau": 1,
+      "debut": "2026-09-30T22:00:00.000Z",
+      "fin": "2026-10-02T22:00:00.000Z",
+      "personnes": 45,
+      "prix": 333,
+      "statut": "En cours",
+      "id": 6
+    },
+    {
+      "client": 3,
+      "bateau": 1,
+      "debut": "2026-09-30T22:00:00.000Z",
+      "fin": "2026-10-01T22:00:00.000Z",
+      "personnes": 12,
+      "prix": 222,
+      "statut": "Terminée",
+      "id": 7
+    },
+    {
+      "client": 3,
+      "bateau": 1,
+      "debut": "2026-10-04T22:00:00.000Z",
+      "fin": "2026-10-06T22:00:00.000Z",
+      "personnes": 57,
+      "prix": 333,
+      "statut": "En cours",
+      "id": 8
+    },
+    {
+      "client": 3,
+      "bateau": 1,
+      "debut": "2026-10-11T22:00:00.000Z",
+      "fin": "2026-10-17T22:00:00.000Z",
+      "personnes": 1218,
+      "prix": 777,
+      "statut": "À venir",
+      "id": 9
     }
   ]
 }
