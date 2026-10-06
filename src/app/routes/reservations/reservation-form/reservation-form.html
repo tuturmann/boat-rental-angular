@@ -10,7 +10,6 @@
       <mat-label>Client</mat-label>
       <input
         matInput
-        formControlName="client"
         [formControl]="reservationsControlClient"
         required
         [matAutocomplete]="autoClient"
@@ -26,7 +25,6 @@
       <mat-label>Bateau</mat-label>
       <input
         matInput
-        formControlName="bateau"
         [formControl]="reservationsControlBoat"
         required
         [matAutocomplete]="autoBoat"
@@ -80,36 +78,72 @@
     <div class="calculs">
       <div class="item">
         <span>Client</span>
-        <span>{{ this.reservationsForm.value?.client || '—' }}</span>
+        <span>{{ reservationsForm.value?.client.nom || '—' }}</span>
       </div>
       <div class="item">
         <span>Bateau</span>
-        <span>—</span>
+        <span>{{ reservationsForm.value?.bateau.nom || '—' }}</span>
       </div>
       <div class="item">
         <span>Période</span>
-        <span>—</span>
+        <span>
+          @if (reservationsForm.value?.dateDebut && reservationsForm.value?.dateFin) {
+            Du {{ reservationsForm.value.dateDebut | date: 'dd/MM/yyyy' }} au
+            {{ reservationsForm.value.dateFin | date: 'dd/MM/yyyy' }}
+          } @else {
+            —
+          }
+        </span>
       </div>
       <div class="item">
         <span>Durée</span>
-        <span>—</span>
+        <span>
+          @if (reservationsForm.value?.dateDebut && reservationsForm.value?.dateFin) {
+            @if (reservationsForm.value?.dateDebut > reservationsForm.value?.dateFin) {
+              La date de fin doit être postérieure à la date de début
+            } @else {
+              {{
+                getDuree(reservationsForm.value?.dateDebut, reservationsForm.value?.dateFin) +
+                  ' jours'
+              }}
+            }
+          } @else {
+            —
+          }
+        </span>
       </div>
       <div class="item">
         <span>Personnes</span>
-        <span>—</span>
+        <span>{{ reservationsForm.value?.nombrePersonnes || '—' }}</span>
       </div>
       <div class="separator"></div>
       <div class="item">
         <span>Tarif journalier</span>
-        <span>—</span>
+        <span>{{ reservationsForm.value?.bateau.tarif || '—' }}</span>
       </div>
       <div class="item">
         <span>Prix total</span>
-        <span>—</span>
+        <span>
+          @if (
+            reservationsForm.value?.dateDebut &&
+            reservationsForm.value?.dateFin &&
+            reservationsForm.value?.bateau &&
+            reservationsForm.value?.client
+          ) {
+            {{
+              getPrixTotal(
+                getDuree(reservationsForm.value?.dateDebut, reservationsForm.value?.dateFin),
+                reservationsForm.value?.bateau.tarif
+              ) | currency: 'EUR' : 'symbol' : '1.0-0' : 'fr-FR'
+            }}
+          } @else {
+            —
+          }
+        </span>
       </div>
       <div class="item">
         <span>Caution</span>
-        <span>—</span>
+        <span>{{ reservationsForm.value?.bateau.caution || '—' }}</span>
       </div>
     </div>
   </div>

@@ -9,7 +9,7 @@ import { MatOption, MatSelectModule } from '@angular/material/select';
 import { Client } from '../../clients/client-list/client-list';
 import { ClientsService } from '../../clients/services/clients';
 import { map, Observable, startWith } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, CurrencyPipe, DatePipe } from '@angular/common';
 import { Boat } from '../../fleet/fleet-list/fleet-list';
 import { FleetService } from '../../fleet/services/fleet';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -28,6 +28,8 @@ import { ReservationsService } from '../services/reservations';
     AsyncPipe,
     MatButton,
     MatDatepickerModule,
+    DatePipe,
+    CurrencyPipe,
   ],
   providers: [provideNativeDateAdapter()],
   selector: 'app-reservation-form',
@@ -51,8 +53,8 @@ export class ReservationForm {
 
   ngOnInit() {
     this.reservationsForm = new FormGroup({
-      client: new FormControl('', [Validators.required]),
-      bateau: new FormControl('', [Validators.required]),
+      client: this.reservationsControlClient,
+      bateau: this.reservationsControlBoat,
       dateDebut: new FormControl('', [Validators.required]),
       dateFin: new FormControl('', [Validators.required]),
       nombrePersonnes: new FormControl('', [Validators.required]),
@@ -92,19 +94,24 @@ export class ReservationForm {
     if (this.reservationsForm.invalid) {
       return;
     }
+    console.log(this.reservationsForm.value);
 
-    let submittedReservation = this.reservationsForm.value;
+    const submittedReservation = this.reservationsForm.value;
+    const prixTotal = this.getPrixTotal(
+      this.getDuree(submittedReservation.dateDebut, submittedReservation.dateFin),
+      submittedReservation.bateau.tarif,
+    );
 
     this.reservationsService
       .addReservation(
-        submittedReservation.client,
-        submittedReservation.bateau,
-        submittedReservation.dateFin,
+        submittedReservation.client.id,
+        submittedReservation.bateau.id,
         submittedReservation.dateDebut,
+        submittedReservation.dateFin,
         submittedReservation.nombrePersonnes,
-        1, // a changer, c le prix total bateau journalier * nb jours
+        prixTotal,
       )
-      .subscribe();
+      .subscribe((m) => {});
   }
 
   displayClient(client: Client): string {
@@ -113,5 +120,15 @@ export class ReservationForm {
 
   displayBoat(boat: Boat): string {
     return boat && boat.nom ? boat.nom : '';
+  }
+
+  getDuree(dateDebut: Date, dateFin: Date): number {
+    let dureeMs: number = dateFin.getTime() - dateDebut.getTime();
+    let msParJour: number = 24 * 60 * 60 * 1000;
+    return Math.floor(dureeMs / msParJour) + 1;
+  }
+
+  getPrixTotal(duree: number, tarifJournalier: number): number {
+    return duree * tarifJournalier;
   }
 }

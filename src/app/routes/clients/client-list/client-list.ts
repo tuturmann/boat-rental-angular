@@ -26,6 +26,7 @@ export class ClientList implements OnInit {
   private clientsService = inject(ClientsService);
   private reservationsService = inject(ReservationsService);
   public clientList = new MatTableDataSource<Client>([]);
+  public onEdit: boolean = false;
 
   colonnes: string[] = ['nom', 'prenom', 'email', 'telephone', 'permisBateau', 'actions'];
 

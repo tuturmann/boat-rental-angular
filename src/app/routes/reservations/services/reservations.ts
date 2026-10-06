@@ -29,14 +29,22 @@ export class ReservationsService {
   }
 
   addReservation(
-    clientId: number,
-    bateauId: number,
+    client: number,
+    bateau: number,
     debut: Date,
     fin: Date,
     personnes: number,
     prix: number,
   ) {
-    const body = { clientId, bateauId, debut, fin, personnes, prix, statut: 'À venir' };
+    const body = {
+      client: client,
+      bateau: bateau,
+      debut: debut,
+      fin: fin,
+      personnes: +personnes,
+      prix: +prix,
+      statut: 'À venir',
+    };
     return this.http.post<Reservation>(`${this.baseUrl}/reservationsList`, body);
   }
 }
