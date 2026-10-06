@@ -1,3 +1,5 @@
+@use '../../../../variables';
+
 form {
   min-width: 150px;
   max-width: 500px;
@@ -21,7 +23,9 @@ form {
   flex-direction: column;
   justify-content: space-between;
   margin: 0 5%;
-  background-color: #f3edf7;
+  background-color: variables.$highlight-color;
+  border-radius: 5%;
+  padding: 3%;
 }
 
 .separator {

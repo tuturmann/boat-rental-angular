@@ -25,3 +25,34 @@ L'application est découpée en plusieurs modules et pages :
 - RxJS (Gestion des flux asynchrones, opérateurs `switchMap`, `map`, `forkJoin`)
 - JSON Server (Simulateur d'API REST basé sur un fichier `db.json`)
 - SCSS (Préprocesseur CSS pour une architecture de styles modulable et maintenable)
+
+## Installation
+
+### Projet
+
+Le front, étant en Angular, peut être lancé à l'aide de cette commande :
+
+```bash
+ng serve
+```
+
+Le projet sera alors accessible sur `http://localhost:4200/`.
+
+### API
+
+Ce projet étant une formation Angular, le côté back est simulé par json-server. \
+La "base de données" se situe dans le fichier `shared/api/db.json`.
+
+Pour installer la version utilisée sur ce projet de json-server, voici la commande :
+
+```bash
+npm install json-server@0.17.4
+```
+
+Ensuite on peut lancer l'api avec
+
+```bash
+npm run api
+```
+
+L'API sera alors accessible sur `http://localhost:3000/`.
